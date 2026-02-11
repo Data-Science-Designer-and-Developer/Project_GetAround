@@ -161,6 +161,6 @@ Production-oriented mindset aligned with CDSD expectations
 
 👤 Author
 
-Frédéric
-CDSD Candidate — Data Scientist
-Project completed as part of the Jedha CDSD certification.
+Frédéric  
+CDSD Candidate — Data Scientist  
+Project completed as part of the Jedha CDSD certification.  
