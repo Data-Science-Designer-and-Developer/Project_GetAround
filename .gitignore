@@ -1,63 +1,62 @@
-.venv/
+# =========================
+# Python
+# =========================
 __pycache__/
 *.pyc
-Présentations
-ZZZ_Old
-Project_GetAround/01-Getaround_analysis.ipynb
-Project_GetAround/GetAround_delay_analysis.ipynb
-images1videosImages&Videos/
-*.mp4
-*.png
-# Créer/éditer le .gitignore
-cat > .gitignore << 'EOF'
-# Médias
-Images&Videos/
-*.mp4
-*.png
-*.jpg
-*.jpeg
-*.gif
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
+*.pyo
+*.pyd
 *.so
-.Python
+
+# Virtual environments
+.venv/
 venv/
 env/
-.venv/
 
+# =========================
 # Jupyter
+# =========================
 .ipynb_checkpoints/
 
-# Data
-data/raw/
+# =========================
+# ML artefacts
+# =========================
+*.pkl
+*.joblib
+*.h5
+mlflow.db
+mlruns/
+
+# =========================
+# Data (optional)
+# =========================
 *.csv
 *.xlsx
 *.parquet
 
-# Modèles ML (trop volumineux)
-*.pkl
-*.h5
-*.joblib
-models/*.pkl
-
+# =========================
 # IDE
+# =========================
 .vscode/
 .idea/
-*.swp
 
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
 # Secrets
+# =========================
 .env
 *.key
 credentials.json
 
-# OS
-.DS_Store
-Thumbs.db
-EOFImages&Videos/
-
-mlflow.db
-*.db
-.ipynb_checkpoints/
+# =========================
+# Media (optional)
+# =========================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
