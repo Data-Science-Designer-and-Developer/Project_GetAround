@@ -1,15 +1,19 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 import joblib
 import json
 import numpy as np
 import pandas as pd
+import os
 
 # ── Load model and feature names ────────────────────────────────────────
-pipeline = joblib.load("pipeline.pkl")
 
-with open("feature_names.json", "r") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+pipeline = joblib.load(os.path.join(BASE_DIR, "pipeline.pkl"))
+
+with open(os.path.join(BASE_DIR, "feature_names.json"), "r", encoding="utf-8") as f:
     feature_names = json.load(f)
 
 # ── Initialize app ──────────────────────────────────────────────────────
@@ -23,14 +27,16 @@ app = FastAPI(
 
 
 class PredictInput(BaseModel):
-    input: list
-
-    class Config:
-        json_schema_extra = {
+    input: list[list]
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
-                "input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]
+                "input": [
+                    [150000, 120, 1, 1, 1, 0, 1, 1, 0]
+                ]
             }
         }
+    )
 
 # ── Root route ──────────────────────────────────────────────────────────
 
