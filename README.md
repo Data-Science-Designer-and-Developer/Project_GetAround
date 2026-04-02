@@ -91,8 +91,6 @@ User-facing interface to:
 | Number of features | 13                        |
 
 ### Features
-
-```text
 model_key, mileage, engine_power, fuel, paint_color, car_type,
 private_parking_available, has_gps, has_air_conditioning,
 automatic_car, has_getaround_connect, has_speed_regulator, winter_tires
@@ -101,9 +99,6 @@ automatic_car, has_getaround_connect, has_speed_regulator, winter_tires
 
 ### 🔌 API Endpoint
 
-```md
-## 🔌 API Endpoint
-
 ### POST `/predict`
 
 Send a JSON body with an `input` key containing a list of rows.  
@@ -111,7 +106,6 @@ Each row must follow the exact feature order used by the model.
 
 #### Example request
 
-```bash
 curl -X POST "https://dreipfelt-getaround-api.hf.space/predict" \
 -H "Content-Type: application/json" \
 -d '{
@@ -136,13 +130,8 @@ Example response
   "prediction": [124.52]  
 }  
 
-
-### 🗂️ Repository Structure
-
-```md
 ## 🗂️ Repository Structure
 
-```text
 Project_GetAround/  
 ├── api/                    # FastAPI application  
 │   ├── app.py  
@@ -168,7 +157,7 @@ Project_GetAround/
 ├── requirements-dev.txt  
 └── README.md  
 
-## 🛠️ Tech Stack  
+##  🛠️ Tech Stack  
 - Category	Tools  
 - Language	Python 3.10  
 - Dashboard	Streamlit, Plotly  
