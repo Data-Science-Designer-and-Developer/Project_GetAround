@@ -180,5 +180,8 @@ Frédéric Tellier
 CDSD Candidate — Data Scientist
 Jedha Bootcamp
 
-GitHub: https://github.com/Dreipfelt
-LinkedIn: https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-tellier-8a
+Frédéric Tellier
+LinkedIn: https://www.linkedin.com/in/frédéric-tellier-8a9170283/
+Portfolio: https://github.com/Dreipfelt
+
+CDSD Certification Project — Bloc 5 - Data Science Designer & Developer (RNCP35288)
