@@ -1,145 +1,188 @@
-# 🚗 GetAround — Delay Analysis & Pricing Prediction
-> Certification CDSD — Data Science & Deployment Project — Jedha Bootcamp
+🚗 GetAround — Delay Analysis & Pricing Prediction
 
----
-
-## 📌 Project Overview
+📌 Project Overview
 
 GetAround is a peer-to-peer car rental platform. Late vehicle returns create friction for subsequent rentals, leading to customer dissatisfaction and cancellations.
 
 This project addresses two strategic challenges:
 
-- **Operational optimization** — Analyzing late checkouts and simulating minimum delay thresholds to reduce conflicts between consecutive rentals.
-- **Pricing optimization** — Serving a Machine Learning model via a production API to help owners set optimal daily rental prices.
+    Operational optimization — Analyzing late checkouts and simulating minimum delay thresholds to reduce conflicts between consecutive rentals.
+    Pricing optimization — Serving a Machine Learning model via a production API to help owners set optimal daily rental prices.
 
----
+🔗 Live Applications
+Service	URL
+📊 Delay Dashboard	https://huggingface.co/spaces/Dreipfelt/getaround-dashboard
+💰 Pricing Demo	https://huggingface.co/spaces/Dreipfelt/Getaround-Pricing
+🔌 API	https://dreipfelt-getaround-api.hf.space
+📄 API Docs	https://dreipfelt-getaround-api.hf.space/docs
+💻 GitHub	https://github.com/Data-Science-Designer-and-Developer/Project_GetAround
 
-## 🔗 Production Links
+🎯 Business Objectives
+1. Delay Management
+Measure how often vehicles are returned late
+Quantify impact on subsequent rentals
+Simulate minimum delay thresholds (0 → 720 minutes)
+Help Product team decide:
+optimal buffer time
+feature scope (all vehicles vs Connect only)
+2. Pricing Optimisation
+Train a regression model on vehicle characteristics
+Serve predictions via REST API
+Enable real-time pricing recommendations
 
-| Service | URL |
-|---------|-----|
-| 📊 Dashboard | https://huggingface.co/spaces/Dreipfelt/getaround-dashboard |
-| 🔌 API | https://Dreipfelt-getaround-api.hf.space |
-| 📄 API Docs | https://Dreipfelt-getaround-api.hf.space/docs |
-| 💻 GitHub | https://github.com/Data-Science-Designer-and-Developer/Project_GetAround |
+🏗️ Architecture
+                ┌────────────────────┐
+                │  Delay Dashboard   │
+                │   (Streamlit)      │
+                └────────┬───────────┘
+                         │
+                         │
+                ┌────────▼───────────┐
+                │   Pricing Demo     │
+                │   (Streamlit)      │
+                └────────┬───────────┘
+                         │ HTTP
+                         ▼
+                ┌────────────────────┐
+                │   FastAPI API      │
+                │   /predict         │
+                └────────┬───────────┘
+                         │
+                         ▼
+                ┌────────────────────┐
+                │ ML Pipeline        │
+                │ (Preprocessing +   │
+                │  XGBoost model)    │
+                └────────────────────┘
 
----
+📊 Delay Dashboard
 
-## 🎯 Business Objectives
+Interactive tool for Product Managers:
 
-### Delay Management
-- Measure how often drivers return cars late
-- Quantify the impact on subsequent rentals
-- Simulate different minimum delay thresholds (0 to 720 minutes)
-- Help Product Management choose:
-  - an optimal delay **threshold**
-  - an appropriate **scope** (all cars vs Connect only)
+Visualise delay distributions
+Compare Connect vs Mobile
+Simulate trade-offs:
+% blocked rentals (cost)
+% problems solved (benefit)
+Adjust threshold in real time
 
-### Pricing Optimization
-- Train a ML model on car characteristics
-- Serve predictions via a REST API
-- Allow real-time price prediction through a `/predict` endpoint
+💰 Pricing Demo
 
----
+User-facing interface to:
 
-## 📊 Dashboard
+Select vehicle characteristics
+Call the API /predict endpoint
+Display estimated rental price
 
-The interactive dashboard allows Product Managers to:
-- Visualize the distribution of late checkouts
-- Compare Connect vs Mobile check-in types
-- Simulate the trade-off between blocked rentals and resolved issues
-- Filter by scope and threshold in real time
+🤖 Machine Learning API
+Model
+Property	Value
+Algorithm	XGBoost Regressor
+Target	rental_price_per_day (€)
+RMSE	16.60
+MAE	10.50
+R²	0.738
+Features	13
+Features
+model_key, mileage, engine_power, fuel, paint_color, car_type,
+private_parking_available, has_gps, has_air_conditioning,
+automatic_car, has_getaround_connect, has_speed_regulator, winter_tires
 
-🔗 https://huggingface.co/spaces/Dreipfelt/getaround-dashboard
+🔌 API Endpoint
+POST /predict
+Example request
+curl -X POST "https://dreipfelt-getaround-api.hf.space/predict" \
+-H "Content-Type: application/json" \
+-d '{
+  "input": [[
+    "Citroën",
+    50000,
+    120,GetAround is a peer-to-peer car rental platform. Late vehicle returns create friction for subsequent rentals, leading to customer dissatisfaction and cancellations.
 
----
+This project addresses two strategic challenges:
 
-## 🤖 Machine Learning API
+    Operational optimization — Analyzing late checkouts and simulating minimum delay thresholds to reduce conflicts between consecutive rentals.
+    Pricing optimization — Serving a Machine Learning model via a production API to help owners set optimal daily rental prices.
 
-### Model
-| Property | Value |
-|----------|-------|
-| Algorithm | Random Forest Regressor |
-| Target | rental_price_per_day (€) |
-| R² score | ~0.68 |
-| Features | 28 (mileage, engine_power, fuel, color, car_type, options...) |
+    "diesel",
+    "black",
+    "sedan",
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0
+  ]]
+}'
+Example response
+{
+  "prediction": [124.52]
+}
 
-### Endpoint `/predict`
-- **Method** : POST
-- **Input** : JSON with key `input` — list of lists
-```bash
-curl -X POST "https://Dreipfelt-getaround-api.hf.space/predict" \
-     -H "Content-Type: application/json" \
-     -d '{"input": [[150000, 120, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]]}'
-```
-
-**Response** :
-```json
-{"prediction": [104.75]}
-```
-
-📄 Full documentation : https://Dreipfelt-getaround-api.hf.space/docs
-
----
-
-## 🗂️ Repository Structure
-```
+🗂️ Repository Structure
 Project_GetAround/
-├── api/                        # FastAPI application
-│   ├── app.py                  # API endpoints
-│   ├── Dockerfile              # Docker configuration
-│   └── feature_names.json      # Model feature names
-│
-├── dashboard/                  # Streamlit dashboard
-│   ├── app.py                  # Dashboard application
+├── api/                    # FastAPI application
+│   ├── app.py
+│   ├── pipeline.pkl
+│   ├── feature_names.json
+│   ├── model_metrics.json
 │   └── requirements.txt
 │
-├── notebooks/                  # Jupyter notebooks
-│   ├── 01_EDA_delays.ipynb     # Delay analysis
-│   └── 02_ML_pricing.ipynb     # ML model training
+├── delay_dashboard/        # Delay analysis app
+│   ├── app.py
+│   └── requirements.txt
+│
+├── pricing_demo/           # Pricing demo app
+│   ├── app.py
+│   └── requirements.txt
+│
+├── notebooks/
+│   ├── 01_EDA_delays.ipynb
+│   └── 02_ML_pricing.ipynb
 │
 ├── .gitignore
+├── requirements-dev.txt
 └── README.md
-```
 
----
+🛠️ Tech Stack
+Category	Tools
+Language	Python 3.10
+Dashboard	Streamlit, Plotly
+API	FastAPI, Uvicorn
+ML	Scikit-learn, XGBoost
+Deployment	Hugging Face Spaces
+Version Control	Git, GitHub
 
-## 🛠️ Tech Stack
-
-| Category | Tools |
-|----------|-------|
-| Language | Python 3.10 |
-| Dashboard | Streamlit, Plotly |
-| API | FastAPI, Uvicorn |
-| ML | Scikit-learn, Random Forest |
-| Deployment | Hugging Face Spaces, Docker |
-| Version Control | Git, GitHub |
-
----
-
-## ⚙️ Local Setup
-```bash
-# Clone the repo
+⚙️ Local Setup
+1. Clone the repo
 git clone https://github.com/Data-Science-Designer-and-Developer/Project_GetAround.git
 cd Project_GetAround
-
-# Install dependencies
-pip install -r dashboard/requirements.txt
-
-# Run the dashboard
-streamlit run dashboard/app.py
-
-# Run the API
+2. Run API
 cd api
+pip install -r requirements.txt
 uvicorn app:app --reload
-# API available at http://localhost:8000
-```
 
----
+→ http://localhost:8000
 
-## 👤 Author
+3. Run Delay Dashboard
+cd delay_dashboard
+pip install -r requirements.txt
+streamlit run app.py
+4. Run Pricing Demo
+cd pricing_demo
+pip install -r requirements.txt
+streamlit run app.py
 
-**Frédéric**
+🚀 Key Takeaways
+Strong trade-off between operational constraints and customer experience
+Machine Learning enables real-time pricing decisions
+End-to-end pipeline:
+Data → Model → API → Product interface
+
+👤 Author
+Frédéric
 LinkedIn: https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-tellier-8a 
 GitHub: https://github.com/Dreipfelt
 CDSD Candidate — Data Scientist
