@@ -176,12 +176,11 @@ streamlit run app.py
 
 ## 👤 Author
 
-Frédéric Tellier
-CDSD Candidate — Data Scientist
-Jedha Bootcamp
+Frédéric Tellier  
+CDSD Candidate — Data Scientist  
+Jedha Bootcamp  
 
-Frédéric Tellier
-LinkedIn: https://www.linkedin.com/in/frédéric-tellier-8a9170283/
-Portfolio: https://github.com/Dreipfelt
+LinkedIn: https://www.linkedin.com/in/frédéric-tellier-8a9170283/  
+Portfolio: https://github.com/Dreipfelt  
 
-CDSD Certification Project — Bloc 5 - Data Science Designer & Developer (RNCP35288)
+CDSD Certification Project — Bloc 5 - Data Science Designer & Developer (RNCP35288)  
