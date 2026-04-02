@@ -130,32 +130,30 @@ Example response
   "prediction": [124.52]  
 }  
 
-## 🗂️ Repository Structure
-
-Project_GetAround/  
-├── api/                    # FastAPI application  
-│   ├── app.py  
-│   ├── Dockerfile  
-│   ├── feature_names.json  
-│   ├── model_metrics.json  
-│   ├── pipeline.pkl  
-│   └── requirements.txt  
+🗂️ Repository Structure
+Project_GetAround/
+├── api/                    # FastAPI application
+│   ├── app.py
+│   ├── pipeline.pkl
+│   ├── feature_names.json
+│   ├── model_metrics.json
+│   └── requirements.txt
 │
-├── delay_dashboard/        # Streamlit dashboard for delay analysis  
-│   ├── app.py  
-│   └── requirements.txt  
+├── delay_dashboard/        # Delay analysis app
+│   ├── app.py
+│   └── requirements.txt
 │
-├── pricing_demo/           # Streamlit app for API-based price prediction  
-│   ├── app.py  
-│   └── requirements.txt  
+├── pricing_demo/           # Pricing demo app
+│   ├── app.py
+│   └── requirements.txt
 │
-├── notebooks/              # EDA and ML training notebooks  
-│   ├── 01_EDA_delays.ipynb  
-│   └── 02_ML_pricing.ipynb  
+├── notebooks/
+│   ├── 01_EDA_delays.ipynb
+│   └── 02_ML_pricing.ipynb
 │
-├── .gitignore  
-├── requirements-dev.txt  
-└── README.md  
+├── .gitignore
+├── requirements-dev.txt
+└── README.md
 
 ##  🛠️ Tech Stack  
 - Category	Tools  
