@@ -173,6 +173,81 @@ streamlit run app.py
 ```
 
 ---
+## 📈 Business Recommendation
+
+### 1. Delay Management Strategy
+
+The analysis highlights a clear trade-off between **operational efficiency** and **customer experience**:
+
+* Increasing the minimum buffer between rentals reduces conflicts
+* However, it also increases the number of **blocked bookings (lost revenue)**
+
+👉 **Recommendation:**
+
+* Set a **default buffer around 60–90 minutes**
+* This range provides a strong balance:
+
+  * significant reduction in conflicts
+  * limited impact on booking volume
+
+👉 **Scope recommendation:**
+
+* Apply stricter thresholds to **Connect vehicles**
+* Keep more flexibility for **Mobile check-ins**
+
+**Why:**
+Connect vehicles show more predictable behaviour, making stricter rules more effective with lower operational risk.
+
+---
+
+### 2. Pricing Strategy
+
+The Machine Learning model enables **data-driven pricing decisions**:
+
+* Price is strongly influenced by:
+
+  * vehicle type
+  * engine power
+  * equipment (GPS, AC, etc.)
+* Significant price variability exists for similar vehicles
+
+👉 **Recommendation:**
+
+* Use the model as a **price recommendation tool for owners**
+* Integrate it directly into the platform to:
+
+  * standardise pricing
+  * reduce underpricing / overpricing
+  * improve marketplace consistency
+
+---
+
+### 3. Product Impact
+
+By combining both solutions, GetAround can:
+
+* Reduce customer friction and cancellations
+* Improve fleet utilisation
+* Increase owner revenue through better pricing
+* Enable **data-driven product decisions**
+
+---
+
+### 4. Next Steps
+
+To maximise impact, the following improvements are recommended:
+
+* Introduce **dynamic buffer thresholds** (adaptive to context: location, demand, vehicle type)
+* Monitor **A/B test performance** of different delay strategies
+* Continuously retrain the pricing model with fresh data
+* Integrate both tools into a unified internal product dashboard
+
+---
+
+### 5. Key Takeaway
+
+This project demonstrates how combining **product analytics** and **machine learning** can directly support strategic decisions and improve both **user experience** and **business performance**.
+
 
 ## 👤 Author
 
