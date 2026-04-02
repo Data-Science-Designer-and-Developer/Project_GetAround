@@ -1,6 +1,6 @@
-🚗 GetAround — Delay Analysis & Pricing Prediction  
+# 🚗 GetAround — Delay Analysis & Pricing Prediction  
 
-📌 Project Overview  
+# 📌 Project Overview  
 
 GetAround is a peer-to-peer car rental platform. Late vehicle returns create friction for subsequent rentals, leading to customer dissatisfaction and cancellations.  
 
@@ -9,7 +9,7 @@ This project addresses two strategic challenges:
     Operational optimization — Analyzing late checkouts and simulating minimum delay thresholds to reduce conflicts between consecutive rentals.  
     Pricing optimization — Serving a Machine Learning model via a production API to help owners set optimal daily rental prices.  
 
-🔗 Live Applications  
+# 🔗 Live Applications  
 Service	URL  
 📊 Delay Dashboard	https://huggingface.co/spaces/Dreipfelt/getaround-dashboard  
 💰 Pricing Demo	https://huggingface.co/spaces/Dreipfelt/Getaround-Pricing  
@@ -17,7 +17,7 @@ Service	URL
 📄 API Docs	https://dreipfelt-getaround-api.hf.space/docs  
 💻 GitHub	https://github.com/Data-Science-Designer-and-Developer/Project_GetAround  
 
-🎯 Business Objectives  
+# 🎯 Business Objectives  
 1. Delay Management  
 Measure how often vehicles are returned late  
 Quantify impact on subsequent rentals  
@@ -30,7 +30,7 @@ Train a regression model on vehicle characteristics
 Serve predictions via REST API  
 Enable real-time pricing recommendations  
 
-🏗️ Architecture  
+# 🏗️ Architecture
                 ┌────────────────────┐  
                 │  Delay Dashboard   │  
                 │   (Streamlit)      │  
@@ -55,7 +55,7 @@ Enable real-time pricing recommendations
                 │  XGBoost model)    │  
                 └────────────────────┘  
 
-📊 Delay Dashboard
+# 📊 Delay Dashboard
 
 Interactive tool for Product Managers:  
 
@@ -66,7 +66,7 @@ Simulate trade-offs:
 % problems solved (benefit)  
 Adjust threshold in real time  
 
-💰 Pricing Demo
+# 💰 Pricing Demo
 
 User-facing interface to:  
 
@@ -74,7 +74,7 @@ Select vehicle characteristics
 Call the API /predict endpoint  
 Display estimated rental price  
 
-🤖 Machine Learning API  
+# 🤖 Machine Learning API  
 Model  
 Property	Value  
 Algorithm	XGBoost Regressor  
@@ -88,7 +88,7 @@ model_key, mileage, engine_power, fuel, paint_color, car_type,
 private_parking_available, has_gps, has_air_conditioning,  
 automatic_car, has_getaround_connect, has_speed_regulator, winter_tires  
 
-🔌 API Endpoint  
+# 🔌 API Endpoint  
 POST /predict  
 Example request  
 curl -X POST "https://dreipfelt-getaround-api.hf.space/predict" \  
@@ -121,7 +121,7 @@ Example response
   "prediction": [124.52]  
 }  
 
-🗂️ Repository Structure  
+# 🗂️ Repository Structure  
 Project_GetAround/  
 ├── api/                    # FastAPI application  
 │   ├── app.py  
@@ -146,7 +146,7 @@ Project_GetAround/
 ├── requirements-dev.txt  
 └── README.md  
 
-🛠️ Tech Stack  
+# 🛠️ Tech Stack  
 Category	Tools  
 Language	Python 3.10  
 Dashboard	Streamlit, Plotly  
@@ -155,34 +155,35 @@ ML	Scikit-learn, XGBoost
 Deployment	Hugging Face Spaces  
 Version Control	Git, GitHub  
 
-⚙️ Local Setup  
+# ⚙️ Local Setup  
 1. Clone the repo  
 git clone https://github.com/Data-Science-Designer-and-Developer/Project_GetAround.git  
 cd Project_GetAround  
+
 2. Run API  
 cd api  
 pip install -r requirements.txt   
 uvicorn app:app --reload   
-
 → http://localhost:8000  
 
 3. Run Delay Dashboard  
 cd delay_dashboard  
 pip install -r requirements.txt  
 streamlit run app.py  
+
 4. Run Pricing Demo  
 cd pricing_demo  
 pip install -r requirements.txt  
 streamlit run app.py  
 
-🚀 Key Takeaways  
+# 🚀 Key Takeaways  
 Strong trade-off between operational constraints and customer experience  
 Machine Learning enables real-time pricing decisions  
 End-to-end pipeline:  
 Data → Model → API → Product interface  
 
-👤 Author  
-Frédéric  
+# 👤 Author  
+Frédéric Tellier
 LinkedIn: https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-tellier-8a   
 GitHub: https://github.com/Dreipfelt  
 CDSD Candidate — Data Scientist  
