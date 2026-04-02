@@ -14,7 +14,10 @@ st.header("Vehicle characteristics")
 col1, col2 = st.columns(2)
 
 with col1:
-    model_key = st.text_input("Model (e.g. Citroën, BMW)", "Citroën")
+    model_key = st.selectbox(
+    "Vehicle brand / model",
+    ["Citroën", "Peugeot", "BMW", "Renault", "Audi", "Nissan", "Mitsubishi", "Mercedes", "Volkswagen", "Toyota", "SEAT", "Subaru", "Opel", "Ferrari", "Porsche"]
+)
     mileage = st.number_input("Mileage (km)", 0, 300000, 50000)
     engine_power = st.number_input("Engine power (hp)", 0, 300, 120)
 
@@ -42,7 +45,7 @@ with col4:
 # API CALL
 # =========================
 
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "https://Dreipfelt-getaround-api.hf.space/predict"
 
 if st.button("Predict price"):
 
