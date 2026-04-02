@@ -1,111 +1,74 @@
-# 🚗 GetAround — Delay Analysis & Pricing Prediction  
+# 🚗 GetAround — Delay Analysis & Pricing Prediction
 
-## 📌 Project Overview  
+---
 
-GetAround is a peer-to-peer car rental platform. Late vehicle returns create friction for subsequent rentals, leading to customer dissatisfaction and cancellations.  
+## 📌 Project Overview
 
-This project addresses two strategic challenges:  
+GetAround is a peer-to-peer car rental platform where late vehicle returns can disrupt subsequent bookings, leading to customer dissatisfaction and cancellations.
 
-  Operational optimization — Analyzing late checkouts and simulating minimum delay thresholds to reduce conflicts between consecutive rentals.  
-  Pricing optimization — Serving a Machine Learning model via a production API to help owners set optimal daily rental prices.  
+This project tackles two key product challenges:
 
-## 🔗 Live Applications  
-  | Service            | URL                                                                      |
-  |------------------- |--------------------------------------------------------------------------|
-  | 📊 Delay Dashboard | https://huggingface.co/spaces/Dreipfelt/getaround-dashboard              |
-  | 💰 Pricing Demo    | *(add your HF Space URL here)*                                           |
-  | 🔌 API             | https://dreipfelt-getaround-api.hf.space                                 |
-  | 📄 API Docs        | https://dreipfelt-getaround-api.hf.space/docs                            |
-  | 💻 GitHub          | https://github.com/Data-Science-Designer-and-Developer/Project_GetAround |
+* **Operational optimisation** — analysing checkout delays and simulating buffer thresholds
+* **Pricing optimisation** — deploying a Machine Learning model via a production API
 
-## 🎯 Business Objectives  
-1. Delay Management  
-      - Measure how often vehicles are returned late  
-      - Simulate minimum delay thresholds (0 → 720 minutes)  
-      - Help Product team decide:  
-      - optimal buffer time  
-      - feature scope (all vehicles vs Connect only)  
-      - Quantify impact on subsequent rentals  
+---
 
-2. Pricing Optimisation  
-      - Train a regression model on vehicle characteristics  
-      - Serve predictions via REST API  
-      - Enable real-time pricing recommendations  
+## 🔗 Live Applications
 
-## 🏗️ Architecture
-                ┌────────────────────┐  
-                │  Delay Dashboard   │  
-                │   (Streamlit)      │  
-                └────────┬───────────┘  
-                         │  
-                         │  
-                ┌────────▼───────────┐  
-                │   Pricing Demo     │  
-                │   (Streamlit)      │  
-                └────────┬───────────┘  
-                         │ HTTP  
-                         ▼  
-                ┌────────────────────┐  
-                │   FastAPI API      │  
-                │   /predict         │  
-                └────────┬───────────┘  
-                         │  
-                         ▼  
-                ┌────────────────────┐  
-                │ ML Pipeline        │  
-                │ (Preprocessing +   │  
-                │  XGBoost model)    │  
-                └────────────────────┘  
+| Service            | Description                          | URL                                                                      |
+| ------------------ | ------------------------------------ | ------------------------------------------------------------------------ |
+| 📊 Delay Dashboard | Product analytics & delay simulation | https://huggingface.co/spaces/Dreipfelt/getaround-dashboard              |
+| 💰 Pricing Demo    | UI for real-time price prediction    | *(add your HF Space URL here)*                                           |
+| 🔌 API             | FastAPI prediction service           | https://dreipfelt-getaround-api.hf.space                                 |
+| 📄 API Docs        | Interactive documentation            | https://dreipfelt-getaround-api.hf.space/docs                            |
+| 💻 GitHub          | Source code repository               | https://github.com/Data-Science-Designer-and-Developer/Project_GetAround |
 
-## 📊 Delay Dashboard
+---
 
-Interactive tool for Product Managers:  
+## 🎯 Business Objectives
 
-- Visualise delay distributions  
-- Compare Connect vs Mobile  
-- Simulate trade-offs:  
-- % blocked rentals (cost)  
-- % problems solved (benefit)  
-- Adjust threshold in real time  
+### Delay Management
 
-## 💰 Pricing Demo
+* Measure late returns
+* Simulate threshold strategies
+* Optimise trade-off between blocked rentals and solved issues
 
-User-facing interface to:  
-- Select vehicle characteristics  
-- Call the API /predict endpoint  
-- Display estimated rental price  
+### Pricing Optimisation
+
+* Predict rental price from vehicle features
+* Serve model via API
+* Enable real-time decision support
+
+---
 
 ## 🤖 Machine Learning API
 
-### Model
-
-| Property           | Value                     |
-|--------------------|---------------------------|
-| Algorithm          | XGBoost Regressor         |
-| Target             | rental_price_per_day (€)  |
-| RMSE               | 16.60                     |
-| MAE                | 10.50                     |
-| R²                 | 0.738                     |
-| CV RMSE            | 16.86                     |
-| CV RMSE std        | 1.27                      |
-| Number of features | 13                        |
+| Property           | Value                    |
+| ------------------ | ------------------------ |
+| Algorithm          | XGBoost Regressor        |
+| Target             | rental_price_per_day (€) |
+| RMSE               | 16.60                    |
+| MAE                | 10.50                    |
+| R²                 | 0.738                    |
+| CV RMSE            | 16.86                    |
+| CV RMSE std        | 1.27                     |
+| Number of features | 13                       |
 
 ### Features
+
+```text
 model_key, mileage, engine_power, fuel, paint_color, car_type,
 private_parking_available, has_gps, has_air_conditioning,
 automatic_car, has_getaround_connect, has_speed_regulator, winter_tires
+```
 
+---
 
-
-### 🔌 API Endpoint
+## 🔌 API Endpoint
 
 ### POST `/predict`
 
-Send a JSON body with an `input` key containing a list of rows.  
-Each row must follow the exact feature order used by the model.
-
-#### Example request
-
+```bash
 curl -X POST "https://dreipfelt-getaround-api.hf.space/predict" \
 -H "Content-Type: application/json" \
 -d '{
@@ -125,75 +88,97 @@ curl -X POST "https://dreipfelt-getaround-api.hf.space/predict" \
     0
   ]]
 }'
-Example response  
-{  
-  "prediction": [124.52]  
-}  
+```
 
-🗂️ Repository Structure
-Project_GetAround/
-├── api/                    # FastAPI application
+Response:
+
+```json
+{
+  "prediction": [124.52]
+}
+```
+
+---
+
+## 🗂️ Repository Structure
+
+```text
+Project_GetAround/  
+│  
+├── api/                          # FastAPI application (model serving)  
+│   ├── app.py                    # API endpoints (/predict)  
+│   ├── Dockerfile                # HF deployment config  
+│   ├── pipeline.pkl              # Trained ML pipeline  
+│   ├── feature_names.json        # Input feature order  
+│   ├── model_metrics.json        # Model performance metrics  
+│   └── requirements.txt  
+│  
+├── delay_dashboard/              # Streamlit app (delay analysis)  
 │   ├── app.py
-│   ├── pipeline.pkl
-│   ├── feature_names.json
-│   ├── model_metrics.json
 │   └── requirements.txt
-│
-├── delay_dashboard/        # Delay analysis app
-│   ├── app.py
-│   └── requirements.txt
-│
-├── pricing_demo/           # Pricing demo app
-│   ├── app.py
-│   └── requirements.txt
-│
-├── notebooks/
-│   ├── 01_EDA_delays.ipynb
-│   └── 02_ML_pricing.ipynb
-│
-├── .gitignore
-├── requirements-dev.txt
-└── README.md
+│  
+├── pricing_demo/                 # Streamlit app (price prediction UI)  
+│   ├── app.py  
+│   └── requirements.txt  
+│  
+├── notebooks/                    # Data exploration & model training  
+│   ├── 01_EDA_delays.ipynb  
+│   └── 02_ML_pricing.ipynb  
+│  
+├── .gitignore  
+├── requirements-dev.txt  
+└── README.md  
+```
 
-##  🛠️ Tech Stack  
-- Category	Tools  
-- Language	Python 3.10  
-- Dashboard	Streamlit, Plotly  
-- API	FastAPI, Uvicorn  
-- ML	Scikit-learn, XGBoost  
-- Deployment	Hugging Face Spaces  
-- Version Control	Git, GitHub  
+---
 
-## ⚙️ Local Setup  
-1. Clone the repo  
-git clone https://github.com/Data-Science-Designer-and-Developer/Project_GetAround.git  
-cd Project_GetAround  
+## 🛠️ Tech Stack
 
-2. Run API  
-cd api  
-pip install -r requirements.txt   
-uvicorn app:app --reload   
-→ http://localhost:8000  
+| Category         | Tools                 |
+| ---------------- | --------------------- |
+| Language         | Python 3.10           |
+| Dashboard        | Streamlit, Plotly     |
+| API              | FastAPI, Uvicorn      |
+| Machine Learning | Scikit-learn, XGBoost |
+| Deployment       | Hugging Face Spaces   |
+| Version Control  | Git, GitHub           |
 
-3. Run Delay Dashboard  
-cd delay_dashboard  
-pip install -r requirements.txt  
-streamlit run app.py  
+---
 
-4. Run Pricing Demo  
-cd pricing_demo  
-pip install -r requirements.txt  
-streamlit run app.py  
+## ⚙️ Local Setup
 
-## 🚀 Key Takeaways  
-- Strong trade-off between operational constraints and customer experience  
-- Machine Learning enables real-time pricing decisions  
-- End-to-end pipeline:  
-- Data → Model → API → Product interface  
+```bash
+git clone https://github.com/Data-Science-Designer-and-Developer/Project_GetAround.git
+cd Project_GetAround
+```
 
-## 👤 Author  
-Frédéric Tellier  
-LinkedIn: https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-tellier-8a   
-GitHub: https://github.com/Dreipfelt  
-CDSD Candidate — Data Scientist  
-Jedha Bootcamp  
+### Run API
+
+```bash
+cd api
+pip install -r requirements.txt
+uvicorn app:app --reload
+```
+
+### Run dashboards
+
+```bash
+cd delay_dashboard
+streamlit run app.py
+```
+
+```bash
+cd pricing_demo
+streamlit run app.py
+```
+
+---
+
+## 👤 Author
+
+Frédéric Tellier
+CDSD Candidate — Data Scientist
+Jedha Bootcamp
+
+GitHub: https://github.com/Dreipfelt
+LinkedIn: https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-tellier-8a
