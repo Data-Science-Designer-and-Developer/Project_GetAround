@@ -60,3 +60,6 @@ credentials.json
 *.jpeg
 *.gif
 *.mp4
+
+
+requirements-dev.txt

@@ -145,6 +145,19 @@ Project_GetAround/
 
 ---
 
+## 📅 Project Timeline
+
+| Stage                   | Description                                           | Estimated Duration |
+| ----------------------- | ----------------------------------------------------- | ------------------ |
+| 1. Data Exploration     | EDA on delays and pricing                             | ~3h                |
+| 2. Business Analysis    | Threshold simulations, revenue impact, visualisations | ~3h                |
+| 3. Dashboard            | Streamlit development and deployment                  | ~3h                |
+| 4. Machine Learning     | Feature engineering, XGBoost training and evaluation  | ~5h                |
+| 5. FastAPI API          | Development of the /predict endpoint, Dockerfile      | ~3h                |
+| 6. HF Spaces Deployment | Configuration, testing, production release            | ~2h                |
+| **Total**               |                                                       | **~19h**           |
+
+
 ## ⚙️ Local Setup
 
 ```bash
@@ -247,6 +260,27 @@ To maximise impact, the following improvements are recommended:
 ### 5. Key Takeaway
 
 This project demonstrates how combining **product analytics** and **machine learning** can directly support strategic decisions and improve both **user experience** and **business performance**.
+
+## 🎯 Executive Summary
+
+GetAround is losing customers due to late returns between consecutive bookings. This project addresses two concrete product questions:
+
+What minimum buffer time should be enforced between two bookings to reduce conflicts without significantly impacting revenue? → Analysis of 2017 data shows that a 60 to 90-minute buffer significantly reduces problematic cases while limiting the impact on revenue.
+How can owners optimise their listed prices? → An XGBoost model (R² = 0.74) predicts the optimal daily price based on vehicle characteristics, with a median error of approximately €10 per day.
+
+Both tools are deployed in production and accessible via the links below.
+
+## 🔒 GDPR Compliance
+
+This project is carried out in an educational context using datasets provided by GetAround to Jedha Bootcamp.
+
+**Nature of the data:** The datasets used (`get_around_delay_analysis.xlsx`, `get_around_pricing_project.csv`) are **pseudonymised**: no names, email addresses, phone numbers, or direct identifiers of drivers or owners are included. Rental identifiers (`rental_id`, `car_id`) are technical keys with no link to identifiable individuals.
+
+**Legal basis for processing:** Internal analysis for service improvement purposes (legitimate interest — Art. 6(1)(f) GDPR). The data is not collected במסגרת this project but reused for analytical purposes.
+
+**Storage:** The deployed API does not store any data transmitted through `/predict` requests. No personal data is retained on the server side.
+
+**Data subject rights:** GetAround users have rights of access, rectification, and erasure directly with GetAround (the data controller). This project does not act as a data controller.
 
 
 ## 👤 Author
