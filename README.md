@@ -276,7 +276,7 @@ This project is carried out in an educational context using datasets provided by
 
 **Nature of the data:** The datasets used (`get_around_delay_analysis.xlsx`, `get_around_pricing_project.csv`) are **pseudonymised**: no names, email addresses, phone numbers, or direct identifiers of drivers or owners are included. Rental identifiers (`rental_id`, `car_id`) are technical keys with no link to identifiable individuals.
 
-**Legal basis for processing:** Internal analysis for service improvement purposes (legitimate interest — Art. 6(1)(f) GDPR). The data is not collected במסגרת this project but reused for analytical purposes.
+**Legal basis for processing:** Internal analysis for service improvement purposes (legitimate interest — Art. 6(1)(f) GDPR). The data is not collected as part of this project but reused for analytical purposes.
 
 **Storage:** The deployed API does not store any data transmitted through `/predict` requests. No personal data is retained on the server side.
 
