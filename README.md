@@ -18,7 +18,7 @@ This project tackles two key product challenges:
 | Service            | Description                          | URL                                                                      |
 | ------------------ | ------------------------------------ | ------------------------------------------------------------------------ |
 | 📊 Delay Dashboard | Product analytics & delay simulation | https://huggingface.co/spaces/Dreipfelt/getaround-dashboard              |
-| 💰 Pricing Demo    | UI for real-time price prediction    | *(add your HF Space URL here)*                                           |
+| 💰 Pricing Demo    | UI for real-time price prediction    | *https://huggingface.co/spaces/Dreipfelt/Getaround-Pricing*                                           |
 | 🔌 API             | FastAPI prediction service           | https://dreipfelt-getaround-api.hf.space                                 |
 | 📄 API Docs        | Interactive documentation            | https://dreipfelt-getaround-api.hf.space/docs                            |
 | 💻 GitHub          | Source code repository               | https://github.com/Data-Science-Designer-and-Developer/Project_GetAround |
