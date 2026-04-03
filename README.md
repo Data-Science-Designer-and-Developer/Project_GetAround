@@ -261,6 +261,8 @@ To maximise impact, the following improvements are recommended:
 
 This project demonstrates how combining **product analytics** and **machine learning** can directly support strategic decisions and improve both **user experience** and **business performance**.
 
+---
+
 ## 🎯 Executive Summary
 
 GetAround is losing customers due to late returns between consecutive bookings. This project addresses two concrete product questions:
@@ -269,6 +271,8 @@ What minimum buffer time should be enforced between two bookings to reduce confl
 How can owners optimise their listed prices? → An XGBoost model (R² = 0.74) predicts the optimal daily price based on vehicle characteristics, with a median error of approximately €10 per day.
 
 Both tools are deployed in production and accessible via the links below.
+
+---
 
 ## 🔒 GDPR Compliance
 
@@ -282,6 +286,7 @@ This project is carried out in an educational context using datasets provided by
 
 **Data subject rights:** GetAround users have rights of access, rectification, and erasure directly with GetAround (the data controller). This project does not act as a data controller.
 
+---
 
 ## 👤 Author
 
