@@ -147,15 +147,15 @@ Project_GetAround/
 
 ## 📅 Project Timeline
 
-| Stage                   | Description                                           | Estimated Duration |
-| ----------------------- | ----------------------------------------------------- | ------------------ |
-| 1. Data Exploration     | EDA on delays and pricing                             | ~3h                |
-| 2. Business Analysis    | Threshold simulations, revenue impact, visualisations | ~3h                |
-| 3. Dashboard            | Streamlit development and deployment                  | ~3h                |
-| 4. Machine Learning     | Feature engineering, XGBoost training and evaluation  | ~5h                |
-| 5. FastAPI API          | Development of the /predict endpoint, Dockerfile      | ~3h                |
-| 6. HF Spaces Deployment | Configuration, testing, production release            | ~2h                |
-| **Total**               |                                                       | **~19h**           |
+| Stage                   | Description                                           | 
+| ----------------------- | ----------------------------------------------------- | 
+| 1. Data Exploration     | EDA on delays and pricing                             | 
+| 2. Business Analysis    | Threshold simulations, revenue impact, visualisations | 
+| 3. Dashboard            | Streamlit development and deployment                  | 
+| 4. Machine Learning     | Feature engineering, XGBoost training and evaluation  | 
+| 5. FastAPI API          | Development of the /predict endpoint, Dockerfile      | 
+| 6. HF Spaces Deployment | Configuration, testing, production release            | 
+| **Total**               |                                                       | 
 
 
 ## ⚙️ Local Setup
