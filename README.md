@@ -49,8 +49,8 @@ This project tackles two key product challenges:
 | GradientBoosting       | 17.03     | 11.37     | 0.725     | 17.35     |
 | **XGBoost (Selected)** | **16.60** | **10.50** | **0.738** | **16.86** |
 
--> The selected XGBoost model reduces prediction error by more than **50% compared to a naive baseline**.
--> With an average error of around **€10 per day**, the model is accurate enough to support pricing decisions while remaining interpretable.
+-> The selected XGBoost model reduces prediction error by more than **50% compared to a naive baseline**.  
+-> With an average error of around **€10 per day**, the model is accurate enough to support pricing decisions while remaining interpretable.  
 
 ---
 ## 🤖 Machine Learning API
