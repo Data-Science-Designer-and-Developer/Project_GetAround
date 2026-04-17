@@ -40,7 +40,16 @@ This project tackles two key product challenges:
 * Enable real-time decision support
 
 ---
+## 📊 Model Benchmark
 
+| Model                  | RMSE | MAE| R²                    |
+|------------------------|------|----|-----------------------|
+| DummyMean              | 32.46     | 23.26     | -0.001    |
+| Ridge                  | 17.97     | 12.12     | 0.693     |
+| RandomForest           | 16.75     | 10.69     | 0.734     |
+| GradientBoosting       | 17.03     | 11.37     | 0.725     |
+| **XGBoost (Selected)** | **16.60** | **10.50** | **0.738** |
+---
 ## 🤖 Machine Learning API
 
 | Property           | Value                    |
